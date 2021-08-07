@@ -1,0 +1,181 @@
+@import url('fonts/OpenSans-SemiBold.ttf');
+*{
+	box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    color: rgb(36, 36, 36);
+}
+.btn{
+    width: 300px;
+    height: 65px;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(71, 156, 49);
+    border: 2px solid rgb(56, 56, 56);
+    border-radius: 50px;
+    box-shadow: 0 4px 7px 0 rgba(56, 56, 56, 0.8);
+    cursor: pointer;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+}
+.btn:hover{
+    background-color: rgb(51, 114, 35);
+}
+h2{
+    margin: 0;
+    padding: 60px 0 0 70px;
+    font-size: 45px;
+}
+
+/*=================Header==================*/
+
+.header{
+    width: 100%;
+    height: 80px;
+    background-color: rgb(185, 53, 53);
+}
+.header_icon{
+    display: block; /*чтобы работал padding у текста*/
+    cursor: pointer;
+    font-size: 50px;
+    padding: 15px 0 0 30px;
+    font-weight: bolder;
+    text-decoration: none;
+    color: white;
+}
+
+/*===================== Main ===================*/
+.main{
+    min-height: 700px;
+    background-color: rgb(242, 243, 156);
+}
+
+/*================Main Page====================*/
+ul{
+    margin-top: 50px;
+    display: block;
+    max-width: 700px;
+}
+li{
+    font-size: 25px;
+    font-weight: 700;
+    padding-bottom: 10px;
+}
+ul > li:not(:last-child){
+    margin-bottom: 15px;
+}
+.noteDescripiton{
+    margin-top: 25px;
+    font-size: 20px;
+}
+.btn-deleteNote{
+    width: 200px;
+    height: 45px;
+    float: right;
+    font-size: 20px;
+    background-color: rgb(71, 156, 49);
+    transition-property: background-color;
+}
+.btn-deleteNote:hover{
+    background-color: rgb(51, 114, 35);
+}
+/*================Add Note page===================*/
+/*кнопка AddNote*/
+.addNote{
+    position: fixed;
+    right: 5%;
+    top: 75%;
+    display: block;
+    cursor: pointer;
+    width: 120px;
+    height: 120px;
+    border: 0;
+    border-radius: 120px;
+    font-size: 100px;
+    text-align: center;
+    font-weight: bolder;
+    text-decoration: none;
+    color: white;
+    background-color: rgb(71, 156, 49);
+    box-shadow: 0 15px 3px 2px rgb(58, 128, 40);
+    transition-property: box-shadow, background-color;
+}
+.addNote:hover{
+    background-color: rgb(51, 114, 35);
+    top: 76%;
+    box-shadow: 0 0px 0px 0px rgb(58, 128, 40);
+}
+.form-addNote{
+    margin: 60px 15px 0 15px;
+    max-width: 760px;
+}
+.form-addNote > div{
+    display: inline-block; /*чтобы <p> тоже отображался в <div> корректно*/
+}
+.form-addNote > div:first-child{
+    margin-bottom: 15px;
+}
+.form-addNote > div:last-child{
+    margin-top: 60px;
+    max-width: 760px; /*-----------------------------*/
+    display: flex;
+    justify-content: space-between;
+}
+.form-addNote > div > label{
+    position: relative;
+    bottom: 22px;
+    font-size: 25px;
+    padding-right: 15px;
+    font-weight: bold;
+}
+.form-addNote > div > textarea{
+    width: 500px;
+    font-size: 25px;
+
+    resize: none; /*пользователь не может менять размеры поля*/
+    padding: 10px 5px;
+    border: 2px solid rgb(56, 56, 56);
+}
+.requirements{
+    position: relative;
+    color: red;
+    float: right;
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 20px;
+}
+.successNote{
+    position: relative;
+    color: green;
+    float: right;
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.15s linear;
+}
+
+
+/*Кнопки "Добавить" и "К заметкам"*/
+.btn-backToNotes{
+    background-color: rgb(218, 135, 42);
+}
+.btn-backToNotes,
+.btn-addNote{
+    transition-property: background-color, width, height, font-size;
+}
+.btn-backToNotes:hover{
+    background-color: rgb(172, 107, 33);
+    width: 285px;
+    height: 62px;
+    font-size: 23px;
+}
+.btn-addNote:hover{
+    background-color: rgb(51, 114, 35);
+    width: 285px;
+    height: 62px;
+    font-size: 23px;
+}
