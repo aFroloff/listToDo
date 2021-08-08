@@ -1,0 +1,14 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>http://listtodo.loc/public/index.php</loc>
+    </url>
+    <url>
+        <loc>http://listtodo.loc/public/add-note.php</loc>
+    </url>
+    <url>
+        <loc>http://listtodo.loc/public/check-add-note.php</loc>
+    </url>
+    <url>
+        <loc>http://listtodo.loc/public/check-delete-note.php</loc>
+    </url>
+</urlset>
