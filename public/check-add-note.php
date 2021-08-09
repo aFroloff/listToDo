@@ -1,16 +1,10 @@
 <?php
     session_start();
-    session_unset();  /* обновление значений */
+    unset($_SESSION['requirements']);  /* обновление значений */
+    /* $_SESSION['requirements'][] - массив который хранит ошибки */
 
-    error_reporting(E_ALL);
-    ini_set("display_errors", 1);                    
-    $options = [
-        \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
-        \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
-        \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8mb4'"
-    ];
-
-    $todo = new PDO("mysql:host=localhost;dbname=todo-list;charset=utf8mb4", 'root', '', $options);
+    require_once "../included/database-connect.php"; /* $todo - база данных */
+    
     $noteName = trim($_POST["note-title"]);
     $noteDescr = trim($_POST["note-description"]);
     $date = date("y.m.d");
@@ -24,11 +18,11 @@
     }
 
     if($noteName == ''){
-        $_SESSION['note-title-req'] = "Поле не должно быть пустым !";
+        $_SESSION['requirements'][0] = "Поле не должно быть пустым !";
         redirectToBack();
     }
     else if($noteDescr == ''){
-        $_SESSION['note-description-req'] = "Поле не должно быть пустым !";
+        $_SESSION['requirements'][1] = "Поле не должно быть пустым !";
         redirectToBack();
     }
     else{ /*  if($noteName != '' && $noteDescr != '') */
@@ -36,7 +30,7 @@
         VALUES (?, ?, ?)';
         $query = $todo->prepare($sql);
         $query->execute([$noteName, $noteDescr, $date]);
-        $_SESSION['note-success-req'] = "Заметка успешно добавлена !";
+        $_SESSION['requirements'][2] = "Заметка успешно добавлена !";
         redirectToBack();
     }
 ?>

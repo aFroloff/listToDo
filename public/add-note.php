@@ -17,11 +17,11 @@
             не в одну в одну строку, то не возникнут
             проблемы с лишними пробелами внутри поля-->
 
-            <!--вывод/не вывод предупрежений о заметке-->
+            <!--вывод/не вывод предупрежения о названии заметки-->
             <?php
-                if(isset($_SESSION['note-title-req'])){
+                if(isset($_SESSION['requirements'][0])){
             ?>
-                <p class="requirements"><?=$_SESSION['note-title-req']?></p>
+                <p class="requirements"><?=$_SESSION['requirements'][0]?></p>
             <?php } ?>
         </div><br>
         <div class="form-field">
@@ -32,15 +32,15 @@
             rows="1"
             ><?=$_SESSION['note-description']?></textarea>
             
-            <!--вывод/не вывод предупрежений о заметке, а также
+            <!--вывод/не вывод предупрежения об описании заметки, или же
             сообщения об успешном заполнении-->
             <?php
-                if(isset($_SESSION['note-description-req'])){
+                if(isset($_SESSION['requirements'][1])){
             ?>
-                <p class="requirements"><?= $_SESSION['note-description-req'] ?></p>
+                <p class="requirements"><?= $_SESSION['requirements'][1] ?></p>
             <?php } 
-                if(isset($_SESSION['note-success-req'])) { ?>
-                <p class="successNote"><?=$_SESSION['note-success-req']?></p>
+                if(isset($_SESSION['requirements'][2])){ ?>
+                <p class="successNote"><?=$_SESSION['requirements'][2]?></p>
             <?php } ?>
         </div>
         <div>
