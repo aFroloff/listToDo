@@ -9,7 +9,7 @@
         <div class="form-field">
             <label for="note-title">Название заметки</label>
             <textarea name="note-title" 
-            type="text" 
+            type="text"
             id="note-title" 
             rows="1"
             ><?=$_SESSION['note-title']?></textarea>

@@ -1,8 +1,8 @@
 <?php
     session_start();
-    unset($_SESSION); 
+    session_unset();
         /*чтобы при повторном переходе на страницу добавления заметки
-        предупреждения стирались*/
+        предупреждения и текст стирались*/
     $title = "List To Do";
     $id = 0; /* отвечает за id каждой записи */
     require_once "../included/header.php";
