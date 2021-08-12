@@ -1,14 +1,16 @@
 <?php
     session_start();
-    session_unset();
-        /*чтобы при повторном переходе на страницу добавления заметки
-        предупреждения и текст стирались*/
-    $title = "List To Do";
+    foreach($_SESSION as $key => $value){
+        unset($_SESSION[$key]);
+    }
+    /*чтобы при повторном переходе на страницу добавления заметки
+    предупреждения и текст стирались*/
+    $title = "Заметки";
     $id = 0; /* отвечает за id каждой записи */
     require_once "../included/header.php";
-    require_once "../included/database-connect.php"; /* $todo - база данных */
+    require_once "../included/database-connect.php"; /* $db - база данных */
 
-    $notes = $todo->prepare('SELECT * FROM notes');
+    $notes = $db->prepare('SELECT * FROM notes');
     $notes->execute();
 ?>
 

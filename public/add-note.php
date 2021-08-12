@@ -11,7 +11,8 @@
             <textarea name="note-title" 
             type="text"
             id="note-title" 
-            rows="1"
+            rows="1" 
+            maxlength="15"
             ><?=$_SESSION['note-title']?></textarea>
             <!--если написать закрывающий и открывающий тег <textarea>
             не в одну в одну строку, то не возникнут
@@ -19,9 +20,9 @@
 
             <!--вывод/не вывод предупрежения о названии заметки-->
             <?php
-                if(isset($_SESSION['requirements'][0])){
+                if($_SESSION['note-title'] == ''){
             ?>
-                <p class="requirements"><?=$_SESSION['requirements'][0]?></p>
+                <p class="requirements"><?=$_SESSION['error']?></p>
             <?php } ?>
         </div><br>
         <div class="form-field">
@@ -29,19 +30,23 @@
             <textarea name="note-description" 
             type="text" 
             id="note-description" 
-            rows="1"
+            rows="1" 
+            maxlength="75"
             ><?=$_SESSION['note-description']?></textarea>
             
             <!--вывод/не вывод предупрежения об описании заметки, или же
             сообщения об успешном заполнении-->
             <?php
-                if(isset($_SESSION['requirements'][1])){
+                if($_SESSION['note-description'] == ''){
             ?>
-                <p class="requirements"><?= $_SESSION['requirements'][1] ?></p>
+                    <p class="requirements"><?= $_SESSION['error'] ?></p>
             <?php } 
-                if(isset($_SESSION['requirements'][2])){ ?>
-                <p class="successNote"><?=$_SESSION['requirements'][2]?></p>
-            <?php } ?>
+                foreach($_SESSION['messages'] ?? [] as $message){
+                    if($message == "Заметка успешно добавлена !"){ ?>
+                        <p class="successNote"><?=$message?></p>
+            <?php
+                }   
+                    } ?>
         </div>
         <div>
             <button type="submit" class="btn btn-addNote">Добавить</button>

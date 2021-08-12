@@ -1,9 +1,10 @@
 <?php
     session_start();
-    unset($_SESSION['requirements']);  /* обновление значений */
-    /* $_SESSION['requirements'][] - массив который хранит ошибки */
+    unset($_SESSION['error']);  /* обновление значений */
+    unset($_SESSION['messages']);  /* обновление значений */
+    /* $_SESSION['messages'][] - массив который хранит ошибки */
 
-    require_once "../included/database-connect.php"; /* $todo - база данных */
+    require_once "../included/database-connect.php"; /* $db - база данных */
     
     $noteName = trim($_POST["note-title"]);
     $noteDescr = trim($_POST["note-description"]);
@@ -18,19 +19,20 @@
     }
 
     if($noteName == ''){
-        $_SESSION['requirements'][0] = "Поле не должно быть пустым !";
+        $_SESSION['error'] = "Поле не должно быть пустым !"; 
+        /*добавление текста в конец массива*/
         redirectToBack();
     }
     else if($noteDescr == ''){
-        $_SESSION['requirements'][1] = "Поле не должно быть пустым !";
+        $_SESSION['error'] = "Поле не должно быть пустым !";
         redirectToBack();
     }
     else{ /*  if($noteName != '' && $noteDescr != '') */
         $sql = 'INSERT notes (name, description, date) 
         VALUES (?, ?, ?)';
-        $query = $todo->prepare($sql);
+        $query = $db->prepare($sql);
         $query->execute([$noteName, $noteDescr, $date]);
-        $_SESSION['requirements'][2] = "Заметка успешно добавлена !";
+        $_SESSION['messages'][] = "Заметка успешно добавлена !";
         redirectToBack();
     }
 ?>
